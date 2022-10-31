@@ -3,7 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AluraFlix.Infrastructure", "src\AluraFlix.Infrastructure\AluraFlix.Infrastructure.csproj", "{DA30058A-29B9-4B36-ACDC-22F4D6EC9ECE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AluraFlix.Domain", "src\AluraFlix.Domain\AluraFlix.Domain.csproj", "{3C55CA67-A3E0-41F7-8881-0BF17F6CCE40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AluraFlix.API", "AluraFlix.API\AluraFlix.API.csproj", "{8FBCDE00-E86B-4ABB-846E-BAC1E947592B}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA30058A-29B9-4B36-ACDC-22F4D6EC9ECE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA30058A-29B9-4B36-ACDC-22F4D6EC9ECE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA30058A-29B9-4B36-ACDC-22F4D6EC9ECE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA30058A-29B9-4B36-ACDC-22F4D6EC9ECE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C55CA67-A3E0-41F7-8881-0BF17F6CCE40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C55CA67-A3E0-41F7-8881-0BF17F6CCE40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C55CA67-A3E0-41F7-8881-0BF17F6CCE40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C55CA67-A3E0-41F7-8881-0BF17F6CCE40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FBCDE00-E86B-4ABB-846E-BAC1E947592B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FBCDE00-E86B-4ABB-846E-BAC1E947592B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FBCDE00-E86B-4ABB-846E-BAC1E947592B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FBCDE00-E86B-4ABB-846E-BAC1E947592B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
