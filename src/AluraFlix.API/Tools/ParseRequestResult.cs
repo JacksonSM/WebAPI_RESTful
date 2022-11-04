@@ -17,7 +17,7 @@ namespace AluraFlix.API.Tools
                 case (int)HttpStatusCode.NoContent:
                     return NoContent();
                 case (int)HttpStatusCode.NotFound:
-                    return NotFound();
+                    return NotFound(request.Message);
                 case (int)HttpStatusCode.BadRequest:
                     return BadRequest(request);
                 default:

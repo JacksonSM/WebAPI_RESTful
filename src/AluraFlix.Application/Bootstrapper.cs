@@ -20,6 +20,7 @@ public static class Bootstrapper
     private static void AddHandlers(IServiceCollection services)
     {
         services.AddScoped<AdicionarVideoHandler>()
-                .AddScoped<ObterTodosVideosHandler>();
+                .AddScoped<ObterTodosVideosHandler>()
+                .AddScoped<ObterVideoPorIdHandler>();
     }
 }

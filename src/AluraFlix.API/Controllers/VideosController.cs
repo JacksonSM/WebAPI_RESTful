@@ -1,4 +1,5 @@
 ﻿using AluraFlix.API.Tools;
+using AluraFlix.Application.Results;
 using AluraFlix.Application.UseCases.Commands;
 using AluraFlix.Application.UseCases.Commands.Video;
 using AluraFlix.Application.UseCases.Handlers.Video;
@@ -29,5 +30,15 @@ public class VideosController : ControllerBase
     [FromServices] ObterTodosVideosHandler handler)
     {
         return new ParseRequestResult().ParseToActionResult(await handler.Handle(new NoParametersCommand()));
+    }
+
+    [HttpGet("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+    public async Task<ActionResult> GetById(
+    int id,
+    [FromServices] ObterVideoPorIdHandler handler)
+    {
+        return new ParseRequestResult().ParseToActionResult(await handler.Handle(new GetByIdCommand { Id = id}));
     }
 }
