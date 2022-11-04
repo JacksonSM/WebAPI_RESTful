@@ -1,4 +1,5 @@
 ﻿using AluraFlix.Application.Tools;
+using AluraFlix.Application.UseCases.Handlers.Video;
 using AluraFlix.Application.UseCases.Handlers.Video.AdicionarVideo;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -18,6 +19,7 @@ public static class Bootstrapper
     }
     private static void AddHandlers(IServiceCollection services)
     {
-        services.AddScoped<AdicionarVideoHandler>();
+        services.AddScoped<AdicionarVideoHandler>()
+                .AddScoped<ObterTodosVideosHandler>();
     }
 }

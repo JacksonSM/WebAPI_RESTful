@@ -17,4 +17,7 @@ public class VideoRepository : IVideosRepository
         await _context.AddAsync(video);
         return video;
     }
+
+    public async Task<IEnumerable<Video>> GetAllAsync() =>
+         _context.Videos.AsEnumerable();
 }

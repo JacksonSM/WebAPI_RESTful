@@ -1,13 +1,16 @@
 ﻿using AluraFlix.API.Tools;
+using AluraFlix.Application.UseCases.Commands;
 using AluraFlix.Application.UseCases.Commands.Video;
+using AluraFlix.Application.UseCases.Handlers.Video;
 using AluraFlix.Application.UseCases.Handlers.Video.AdicionarVideo;
 using AluraFlix.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AluraFlix.API.Controllers;
+
 [Route("api/[controller]")]
 [ApiController]
-public class VideoController : ControllerBase
+public class VideosController : ControllerBase
 {
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(Video))]
@@ -17,5 +20,14 @@ public class VideoController : ControllerBase
     [FromServices] AdicionarVideoHandler handler)
     {
         return new ParseRequestResult().ParseToActionResult(await handler.Handle(command));
+    }
+
+    [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public async Task<ActionResult> GetAll(
+    [FromServices] ObterTodosVideosHandler handler)
+    {
+        return new ParseRequestResult().ParseToActionResult(await handler.Handle(new NoParametersCommand()));
     }
 }
