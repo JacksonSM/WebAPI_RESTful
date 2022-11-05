@@ -10,8 +10,9 @@ public class AluraFlixDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(AluraFlixDbContext).Assembly);
+        InitialConfigDB.CategorialInicial(modelBuilder);
 
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(AluraFlixDbContext).Assembly);
 
         base.OnModelCreating(modelBuilder);
     }
