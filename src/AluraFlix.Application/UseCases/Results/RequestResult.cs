@@ -6,10 +6,10 @@ namespace AluraFlix.Application.UseCases.Results
         public string Message { get; private set; }
         public object Data { get; private set; }
 
-        public RequestResult Ok(object data)
+        public RequestResult Ok(object data, string message = "Requisição realizada com sucesso")
         {
             StatusCode = 200;
-            Message = "Requisição realizada com sucesso";
+            Message = message;
             Data = data;
             return this;
         }

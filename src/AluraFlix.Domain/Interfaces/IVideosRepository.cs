@@ -7,4 +7,5 @@ public interface IVideosRepository
     Task<IEnumerable<Video>> GetAllAsync();
     Task<Video> GetByIdAsync(int id);
     void Update(Video video);
+    void Remove(Video video);
 }

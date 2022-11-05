@@ -25,6 +25,11 @@ public class VideoRepository : IVideosRepository
     public async Task<Video> GetByIdAsync(int id) =>
         await _context.Videos.FirstOrDefaultAsync(x => x.Id == id);
 
+    public void Remove(Video video)
+    {
+        _context.Videos.Remove(video);
+    }
+
     public void Update(Video video)
     {
         _context.Videos.Update(video);

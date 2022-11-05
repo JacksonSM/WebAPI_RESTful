@@ -54,4 +54,15 @@ public class VideosController : ControllerBase
         command.SetId(id);
         return new ParseRequestResult().ParseToActionResult(await handler.Handle(command));
     }
+
+    [HttpDelete("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(string))]
+    [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+    public async Task<ActionResult> Delete(
+    int id,
+    [FromServices] DeletarVideoHandler handler)
+    {
+        return new ParseRequestResult()
+            .ParseToActionResult(await handler.Handle(new DeletarVideoCommand { Id = id}));
+    }
 }
