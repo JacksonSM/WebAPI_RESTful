@@ -8,4 +8,11 @@ public class AluraFlixDbContext : DbContext
 
     public DbSet<Video> Videos { get; set; }
 
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(AluraFlixDbContext).Assembly);
+
+
+        base.OnModelCreating(modelBuilder);
+    }
 }
