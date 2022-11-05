@@ -4,6 +4,7 @@ using AluraFlix.Application.UseCases.Commands;
 using AluraFlix.Application.UseCases.Commands.Video;
 using AluraFlix.Application.UseCases.Handlers.Video;
 using AluraFlix.Application.UseCases.Handlers.Video.AdicionarVideo;
+using AluraFlix.Application.UseCases.Handlers.Video.AtualizarVideo;
 using AluraFlix.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -40,5 +41,17 @@ public class VideosController : ControllerBase
     [FromServices] ObterVideoPorIdHandler handler)
     {
         return new ParseRequestResult().ParseToActionResult(await handler.Handle(new GetByIdCommand { Id = id}));
+    }
+
+    [HttpPut("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+    public async Task<ActionResult> GetById(
+    int id,
+    [FromBody] AtualizarVideoCommand command,
+    [FromServices] AtualizarVideoHandler handler)
+    {
+        command.SetId(id);
+        return new ParseRequestResult().ParseToActionResult(await handler.Handle(command));
     }
 }

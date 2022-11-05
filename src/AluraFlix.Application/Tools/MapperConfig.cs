@@ -15,5 +15,6 @@ public class MapperConfig : Profile
     private void RequestPorEntity()
     {
         CreateMap<AdicionarVideoCommand, Video>();
+        CreateMap<AtualizarVideoCommand, Video>();
     }
 }

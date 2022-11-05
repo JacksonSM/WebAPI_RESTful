@@ -7,20 +7,6 @@ public class AdicionarVideoValidator : AbstractValidator<AdicionarVideoCommand>
 {
     public AdicionarVideoValidator()
     {
-        RuleFor(c => c.Titulo)
-            .NotEmpty()
-            .WithMessage(ResourceMensagensDeErro.VIDEO_TITULO_VAZIO)
-            .MaximumLength(300)
-            .WithMessage(ResourceMensagensDeErro.VIDEO_TITULO_MAXIMO300CARACTERES);
-
-        RuleFor(c => c.Descricao)
-            .NotEmpty()
-            .WithMessage(ResourceMensagensDeErro.VIDEO_DESCRICAO_VAZIO)
-            .MaximumLength(600)
-            .WithMessage(ResourceMensagensDeErro.VIDEO_DESCRICAO_MAXIMO600CARACTERES);
-
-        RuleFor(c => c.URL)
-            .NotEmpty()
-            .WithMessage(ResourceMensagensDeErro.VIDEO_URL_VAZIO);
+        RuleFor(x => x).SetValidator(new VideoValidator());
     }
 }
