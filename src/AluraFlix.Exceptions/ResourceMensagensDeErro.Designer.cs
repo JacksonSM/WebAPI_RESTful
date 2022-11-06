@@ -88,6 +88,15 @@ namespace AluraFlix.Exceptions {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Categoria selecionada não existe..
+        /// </summary>
+        public static string CATEGORIA_INEXISTENTE {
+            get {
+                return ResourceManager.GetString("CATEGORIA_INEXISTENTE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to O campo Titulo deve conter no maximo 200 caracteres.
         /// </summary>
         public static string CATEGORIA_TITULO_MAXIMO200CARACTERES {
@@ -102,6 +111,15 @@ namespace AluraFlix.Exceptions {
         public static string CATEGORIA_TITULO_VAZIO {
             get {
                 return ResourceManager.GetString("CATEGORIA_TITULO_VAZIO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo categoriaId é obrigatório..
+        /// </summary>
+        public static string VIDEO_CATEGORIAID_VAZIO {
+            get {
+                return ResourceManager.GetString("VIDEO_CATEGORIAID_VAZIO", resourceCulture);
             }
         }
         

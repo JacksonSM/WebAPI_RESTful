@@ -126,11 +126,17 @@
   <data name="CATEGORIA_COR_VAZIO" xml:space="preserve">
     <value>O campo Cor é obrigatório.</value>
   </data>
+  <data name="CATEGORIA_INEXISTENTE" xml:space="preserve">
+    <value>Categoria selecionada não existe.</value>
+  </data>
   <data name="CATEGORIA_TITULO_MAXIMO200CARACTERES" xml:space="preserve">
     <value>O campo Titulo deve conter no maximo 200 caracteres</value>
   </data>
   <data name="CATEGORIA_TITULO_VAZIO" xml:space="preserve">
     <value>O campo Título é obrigatório.</value>
+  </data>
+  <data name="VIDEO_CATEGORIAID_VAZIO" xml:space="preserve">
+    <value>O campo categoriaId é obrigatório.</value>
   </data>
   <data name="VIDEO_DESCRICAO_MAXIMO600CARACTERES" xml:space="preserve">
     <value>O campo Descrição deve conter no maximo 600 caracteres</value>

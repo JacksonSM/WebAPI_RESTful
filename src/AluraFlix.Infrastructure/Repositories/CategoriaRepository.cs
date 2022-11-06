@@ -1,6 +1,7 @@
 ﻿using AluraFlix.Domain.Entities;
 using AluraFlix.Domain.Interfaces;
 using AluraFlix.Infrastructure.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace AluraFlix.Infrastructure.Repositories;
 public class CategoriaRepository : ICategoriaRepository
@@ -18,4 +19,6 @@ public class CategoriaRepository : ICategoriaRepository
         return categoria;
     }
 
+    public async Task<bool> ExistById(int id) => 
+        await _context.Categorias.AnyAsync(c => c.Id == id);
 }

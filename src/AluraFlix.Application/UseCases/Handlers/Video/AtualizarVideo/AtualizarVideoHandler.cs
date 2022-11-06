@@ -1,6 +1,7 @@
 ﻿using AluraFlix.Application.UseCases.Commands.Video;
 using AluraFlix.Application.UseCases.Results;
 using AluraFlix.Domain.Interfaces;
+using AluraFlix.Exceptions;
 using AluraFlix.Exceptions.ExceptionsBase;
 using AutoMapper;
 
@@ -8,20 +9,22 @@ namespace AluraFlix.Application.UseCases.Handlers.Video.AtualizarVideo;
 public class AtualizarVideoHandler : IHandler<AtualizarVideoCommand>
 {
     private readonly IVideosRepository _videosRepository;
+    private readonly ICategoriaRepository _categoriaRepository;
     private readonly IUnitOfWork _uow;
-
 
     public AtualizarVideoHandler(
         IVideosRepository videosRepository,
+        ICategoriaRepository categoriaRepository,
         IUnitOfWork uow)
     {
         _videosRepository = videosRepository;
+        _categoriaRepository = categoriaRepository;
         _uow = uow;
     }
 
     public async Task<RequestResult> Handle(AtualizarVideoCommand command)
     {
-        Validar(command);
+        await ValidarAsync(command);
 
         var video = await _videosRepository.GetByIdAsync(command.Id);
 
@@ -36,11 +39,14 @@ public class AtualizarVideoHandler : IHandler<AtualizarVideoCommand>
         return new RequestResult().Ok(video);
     }
 
-    private void Validar(AtualizarVideoCommand command)
+    private async Task ValidarAsync(AtualizarVideoCommand command)
     {
         var validator = new AtualizarVideoValidator();
         var validationResult = validator.Validate(command);
 
+        bool existeCategoria = await _categoriaRepository.ExistById(command.CategoriaId);
+        if (!existeCategoria) validationResult.Errors
+                .Add(new FluentValidation.Results.ValidationFailure(string.Empty, ResourceMensagensDeErro.CATEGORIA_INEXISTENTE));
 
         if (!validationResult.IsValid)
         {

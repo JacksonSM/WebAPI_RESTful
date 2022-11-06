@@ -22,5 +22,9 @@ public class VideoValidator : AbstractValidator<VideoCommand>
         RuleFor(c => c.URL)
             .NotEmpty()
             .WithMessage(ResourceMensagensDeErro.VIDEO_URL_VAZIO);
+
+        RuleFor(c => c.CategoriaId)
+            .NotEmpty()
+            .WithMessage(ResourceMensagensDeErro.VIDEO_CATEGORIAID_VAZIO);
     }
 }
