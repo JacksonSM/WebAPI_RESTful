@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AluraFlix.Application\AluraFlix.Application.csproj" />
-    <ProjectReference Include="..\AluraFlix.Domain\AluraFlix.Domain.csproj" />
     <ProjectReference Include="..\AluraFlix.Exceptions\AluraFlix.Exceptions.csproj" />
     <ProjectReference Include="..\AluraFlix.Infrastructure\AluraFlix.Infrastructure.csproj" />
   </ItemGroup>

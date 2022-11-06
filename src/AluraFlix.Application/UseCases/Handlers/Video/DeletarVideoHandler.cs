@@ -1,4 +1,4 @@
-﻿using AluraFlix.Application.UseCases.Commands;
+﻿using AluraFlix.Application.UseCases.Commands.Video;
 using AluraFlix.Application.UseCases.Results;
 using AluraFlix.Domain.Interfaces;
 

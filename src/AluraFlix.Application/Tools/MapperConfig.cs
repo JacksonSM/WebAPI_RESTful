@@ -1,4 +1,5 @@
-﻿using AluraFlix.Application.UseCases.Commands.Video;
+﻿using AluraFlix.Application.UseCases.Commands.Categoria;
+using AluraFlix.Application.UseCases.Commands.Video;
 using AluraFlix.Domain.Entities;
 using AutoMapper;
 
@@ -16,5 +17,7 @@ public class MapperConfig : Profile
     {
         CreateMap<AdicionarVideoCommand, Video>();
         CreateMap<AtualizarVideoCommand, Video>();
+
+        CreateMap<CriarCategoriaCommand, Categoria>();
     }
 }

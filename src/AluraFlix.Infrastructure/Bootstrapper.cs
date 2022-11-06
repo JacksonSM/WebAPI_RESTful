@@ -20,5 +20,6 @@ public static class Bootstrapper
     static void AddRepository(IServiceCollection services)
     {
         services.AddScoped<IVideosRepository, VideoRepository>();
+        services.AddScoped<ICategoriaRepository, CategoriaRepository>();
     }
 }

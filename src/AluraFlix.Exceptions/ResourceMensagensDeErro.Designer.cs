@@ -61,7 +61,52 @@ namespace AluraFlix.Exceptions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to O campo descrição deve conter no maximo 600 caracteres.
+        ///   Looks up a localized string similar to Apenas o hexadecimal é suportado..
+        /// </summary>
+        public static string CATEGORIA_COR_INVALIDO {
+            get {
+                return ResourceManager.GetString("CATEGORIA_COR_INVALIDO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo Cor deve conter no maximo 15 caracteres.
+        /// </summary>
+        public static string CATEGORIA_COR_MAXIMO15CARACTERES {
+            get {
+                return ResourceManager.GetString("CATEGORIA_COR_MAXIMO15CARACTERES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo Cor é obrigatório..
+        /// </summary>
+        public static string CATEGORIA_COR_VAZIO {
+            get {
+                return ResourceManager.GetString("CATEGORIA_COR_VAZIO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo Titulo deve conter no maximo 200 caracteres.
+        /// </summary>
+        public static string CATEGORIA_TITULO_MAXIMO200CARACTERES {
+            get {
+                return ResourceManager.GetString("CATEGORIA_TITULO_MAXIMO200CARACTERES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo Título é obrigatório..
+        /// </summary>
+        public static string CATEGORIA_TITULO_VAZIO {
+            get {
+                return ResourceManager.GetString("CATEGORIA_TITULO_VAZIO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo Descrição deve conter no maximo 600 caracteres.
         /// </summary>
         public static string VIDEO_DESCRICAO_MAXIMO600CARACTERES {
             get {
@@ -70,7 +115,7 @@ namespace AluraFlix.Exceptions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to O campo descrição está vazio..
+        ///   Looks up a localized string similar to O campo Descrição é obrigatório..
         /// </summary>
         public static string VIDEO_DESCRICAO_VAZIO {
             get {
@@ -79,7 +124,7 @@ namespace AluraFlix.Exceptions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to O campo titulo deve conter no maximo 300 caracteres.
+        ///   Looks up a localized string similar to O campo Titulo deve conter no maximo 300 caracteres.
         /// </summary>
         public static string VIDEO_TITULO_MAXIMO300CARACTERES {
             get {
@@ -88,7 +133,7 @@ namespace AluraFlix.Exceptions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to O campo titulo está vazio..
+        ///   Looks up a localized string similar to O campo Titulo é obrigatório..
         /// </summary>
         public static string VIDEO_TITULO_VAZIO {
             get {
@@ -97,7 +142,7 @@ namespace AluraFlix.Exceptions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to O campo URL está vazio..
+        ///   Looks up a localized string similar to O campo URL é obrigatório..
         /// </summary>
         public static string VIDEO_URL_VAZIO {
             get {

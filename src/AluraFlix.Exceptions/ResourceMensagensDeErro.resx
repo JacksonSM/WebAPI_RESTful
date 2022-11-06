@@ -117,19 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CATEGORIA_COR_INVALIDO" xml:space="preserve">
+    <value>Apenas o hexadecimal é suportado.</value>
+  </data>
+  <data name="CATEGORIA_COR_MAXIMO15CARACTERES" xml:space="preserve">
+    <value>O campo Cor deve conter no maximo 15 caracteres</value>
+  </data>
+  <data name="CATEGORIA_COR_VAZIO" xml:space="preserve">
+    <value>O campo Cor é obrigatório.</value>
+  </data>
+  <data name="CATEGORIA_TITULO_MAXIMO200CARACTERES" xml:space="preserve">
+    <value>O campo Titulo deve conter no maximo 200 caracteres</value>
+  </data>
+  <data name="CATEGORIA_TITULO_VAZIO" xml:space="preserve">
+    <value>O campo Título é obrigatório.</value>
+  </data>
   <data name="VIDEO_DESCRICAO_MAXIMO600CARACTERES" xml:space="preserve">
-    <value>O campo descrição deve conter no maximo 600 caracteres</value>
+    <value>O campo Descrição deve conter no maximo 600 caracteres</value>
   </data>
   <data name="VIDEO_DESCRICAO_VAZIO" xml:space="preserve">
-    <value>O campo descrição está vazio.</value>
+    <value>O campo Descrição é obrigatório.</value>
   </data>
   <data name="VIDEO_TITULO_MAXIMO300CARACTERES" xml:space="preserve">
-    <value>O campo titulo deve conter no maximo 300 caracteres</value>
+    <value>O campo Titulo deve conter no maximo 300 caracteres</value>
   </data>
   <data name="VIDEO_TITULO_VAZIO" xml:space="preserve">
-    <value>O campo titulo está vazio.</value>
+    <value>O campo Titulo é obrigatório.</value>
   </data>
   <data name="VIDEO_URL_VAZIO" xml:space="preserve">
-    <value>O campo URL está vazio.</value>
+    <value>O campo URL é obrigatório.</value>
   </data>
 </root>
