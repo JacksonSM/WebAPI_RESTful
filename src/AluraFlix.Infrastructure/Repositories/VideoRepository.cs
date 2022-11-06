@@ -20,7 +20,7 @@ public class VideoRepository : IVideosRepository
     }
 
     public async Task<IEnumerable<Video>> GetAllAsync() =>
-         _context.Videos.AsEnumerable();
+         await _context.Videos.ToArrayAsync();
 
     public async Task<Video> GetByIdAsync(int id) =>
         await _context.Videos.FirstOrDefaultAsync(x => x.Id == id);

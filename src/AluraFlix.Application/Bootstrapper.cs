@@ -1,4 +1,5 @@
 ﻿using AluraFlix.Application.Tools;
+using AluraFlix.Application.UseCases.Handlers.Categoria;
 using AluraFlix.Application.UseCases.Handlers.Categoria.CriarCategoria;
 using AluraFlix.Application.UseCases.Handlers.Video;
 using AluraFlix.Application.UseCases.Handlers.Video.AdicionarVideo;
@@ -27,6 +28,7 @@ public static class Bootstrapper
                 .AddScoped<AtualizarVideoHandler>()
                 .AddScoped<DeletarVideoHandler>();
 
-        services.AddScoped<CriarCategoriaHandler>();
+        services.AddScoped<CriarCategoriaHandler>()
+                .AddScoped<ObterTodasCategoriasHandler>();
     }
 }

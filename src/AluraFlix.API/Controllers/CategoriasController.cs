@@ -1,5 +1,7 @@
 ﻿using AluraFlix.API.Tools;
+using AluraFlix.Application.UseCases.Commands;
 using AluraFlix.Application.UseCases.Commands.Categoria;
+using AluraFlix.Application.UseCases.Handlers.Categoria;
 using AluraFlix.Application.UseCases.Handlers.Categoria.CriarCategoria;
 using AluraFlix.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -18,5 +20,14 @@ public class CategoriasController : ControllerBase
     [FromServices] CriarCategoriaHandler handler)
     {
         return new ParseRequestResult().ParseToActionResult(await handler.Handle(command));
+    }
+
+    [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public async Task<ActionResult> GetAll(
+    [FromServices] ObterTodasCategoriasHandler handler)
+    {
+        return new ParseRequestResult().ParseToActionResult(await handler.Handle(new NoParametersCommand()));
     }
 }
