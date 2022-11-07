@@ -29,6 +29,7 @@ public static class Bootstrapper
                 .AddScoped<DeletarVideoHandler>();
 
         services.AddScoped<CriarCategoriaHandler>()
-                .AddScoped<ObterTodasCategoriasHandler>();
+                .AddScoped<ObterTodasCategoriasHandler>()
+                .AddScoped<ObterCategoriaPorIdHandler>();
     }
 }

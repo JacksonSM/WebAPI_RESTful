@@ -30,4 +30,14 @@ public class CategoriasController : ControllerBase
     {
         return new ParseRequestResult().ParseToActionResult(await handler.Handle(new NoParametersCommand()));
     }
+
+    [HttpGet("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+    public async Task<ActionResult> GetById(
+    int id,
+    [FromServices] ObterCategoriaPorIdHandler handler)
+    {
+        return new ParseRequestResult().ParseToActionResult(await handler.Handle(new GetByIdCommand { Id = id }));
+    }
 }

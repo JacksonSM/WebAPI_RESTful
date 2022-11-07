@@ -2,7 +2,7 @@
 using AluraFlix.Exceptions;
 using FluentValidation;
 
-namespace AluraFlix.Application.UseCases.Handlers.Categoria;
+namespace AluraFlix.Application.UseCases.Handlers.Categoria.Validators;
 public class CategoriaValidator : AbstractValidator<CategoriaCommand>
 {
     public CategoriaValidator()

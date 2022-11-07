@@ -24,4 +24,7 @@ public class CategoriaRepository : ICategoriaRepository
 
     public async Task<IEnumerable<Categoria>> GetAllAsync() =>
         await _context.Categorias.AsNoTracking().ToArrayAsync();
+
+    public async Task<Categoria> GetByIdAsync(int id) =>
+        await _context.Categorias.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
 }
