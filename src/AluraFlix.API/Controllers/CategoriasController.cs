@@ -8,6 +8,7 @@ using AluraFlix.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AluraFlix.API.Controllers;
+
 [Route("api/[controller]")]
 [ApiController]
 
@@ -52,5 +53,16 @@ public class CategoriasController : ControllerBase
     {
         command.SetId(id);
         return new ParseRequestResult().ParseToActionResult(await handler.Handle(command));
+    }
+
+    [HttpDelete("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(string))]
+    [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+    public async Task<ActionResult> Delete(
+    int id,
+    [FromServices] DeletarCategoriaHandler handler)
+    {
+        return new ParseRequestResult()
+            .ParseToActionResult(await handler.Handle(new DeletarCategoriaCommand { Id = id }));
     }
 }

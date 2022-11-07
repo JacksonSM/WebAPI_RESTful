@@ -8,4 +8,5 @@ public interface ICategoriaRepository
     Task<bool> ExistById(int id);
     Task<Categoria> GetByIdAsync(int id);
     void Update(Categoria categoria);
+    void Remove(Categoria video);
 }

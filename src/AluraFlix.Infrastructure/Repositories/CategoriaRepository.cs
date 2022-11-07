@@ -29,5 +29,8 @@ public class CategoriaRepository : ICategoriaRepository
         await _context.Categorias.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
 
     public void Update(Categoria categoria) =>
-        _context.Categorias.Update(categoria); 
+        _context.Categorias.Update(categoria);
+
+    public void Remove(Categoria video) =>
+        _context.Categorias.Remove(video);
 }

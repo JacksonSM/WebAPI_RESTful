@@ -32,6 +32,7 @@ public static class Bootstrapper
         services.AddScoped<CriarCategoriaHandler>()
                 .AddScoped<ObterTodasCategoriasHandler>()
                 .AddScoped<ObterCategoriaPorIdHandler>()
-                .AddScoped<AtualizarCategoriaHandler>();
+                .AddScoped<AtualizarCategoriaHandler>()
+                .AddScoped<DeletarCategoriaHandler>();
     }
 }
