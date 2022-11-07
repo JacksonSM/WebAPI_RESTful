@@ -20,10 +20,10 @@ public class VideoRepository : IVideosRepository
     }
 
     public async Task<IEnumerable<Video>> GetAllAsync() =>
-         await _context.Videos.ToArrayAsync();
+         await _context.Videos.AsNoTracking().ToArrayAsync();
 
     public async Task<Video> GetByIdAsync(int id) =>
-        await _context.Videos.FirstOrDefaultAsync(x => x.Id == id);
+        await _context.Videos.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
 
     public void Remove(Video video)
     {

@@ -20,8 +20,8 @@ public class CategoriaRepository : ICategoriaRepository
     }
 
     public async Task<bool> ExistById(int id) => 
-        await _context.Categorias.AnyAsync(c => c.Id == id);
+        await _context.Categorias.AsNoTracking().AnyAsync(c => c.Id == id);
 
     public async Task<IEnumerable<Categoria>> GetAllAsync() =>
-        await _context.Categorias.ToArrayAsync();
+        await _context.Categorias.AsNoTracking().ToArrayAsync();
 }
