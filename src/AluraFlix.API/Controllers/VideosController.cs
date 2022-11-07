@@ -1,5 +1,4 @@
 ﻿using AluraFlix.API.Tools;
-using AluraFlix.Application.Results;
 using AluraFlix.Application.UseCases.Commands;
 using AluraFlix.Application.UseCases.Commands.Video;
 using AluraFlix.Application.UseCases.Handlers.Video;

@@ -2,6 +2,7 @@
 using AluraFlix.Application.UseCases.Commands;
 using AluraFlix.Application.UseCases.Commands.Categoria;
 using AluraFlix.Application.UseCases.Handlers.Categoria;
+using AluraFlix.Application.UseCases.Handlers.Categoria.AtualizarCategoria;
 using AluraFlix.Application.UseCases.Handlers.Categoria.CriarCategoria;
 using AluraFlix.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -39,5 +40,17 @@ public class CategoriasController : ControllerBase
     [FromServices] ObterCategoriaPorIdHandler handler)
     {
         return new ParseRequestResult().ParseToActionResult(await handler.Handle(new GetByIdCommand { Id = id }));
+    }
+
+    [HttpPut("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+    public async Task<ActionResult> GetById(
+    int id,
+    [FromBody] AtualizarCategoriaCommand command,
+    [FromServices] AtualizarCategoriaHandler handler)
+    {
+        command.SetId(id);
+        return new ParseRequestResult().ParseToActionResult(await handler.Handle(command));
     }
 }

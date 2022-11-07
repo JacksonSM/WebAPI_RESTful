@@ -2,7 +2,7 @@
 using AluraFlix.Exceptions;
 using FluentValidation;
 
-namespace AluraFlix.Application.UseCases.Handlers.Video.AdicionarVideo;
+namespace AluraFlix.Application.UseCases.Handlers.Video;
 public class VideoValidator : AbstractValidator<VideoCommand>
 {
     public VideoValidator()

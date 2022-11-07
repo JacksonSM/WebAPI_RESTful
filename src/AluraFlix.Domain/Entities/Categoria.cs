@@ -7,4 +7,10 @@ public class Categoria : BaseEntity
     public string Cor { get; set; } = string.Empty;
 
     public List<Video> Videos { get; set; }
+
+    public void Update(string titulo, string cor)
+    {
+        Titulo = titulo;
+        Cor = cor;
+    }
 }

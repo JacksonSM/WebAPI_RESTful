@@ -27,4 +27,7 @@ public class CategoriaRepository : ICategoriaRepository
 
     public async Task<Categoria> GetByIdAsync(int id) =>
         await _context.Categorias.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
+
+    public void Update(Categoria categoria) =>
+        _context.Categorias.Update(categoria); 
 }
