@@ -65,4 +65,14 @@ public class CategoriasController : ControllerBase
         return new ParseRequestResult()
             .ParseToActionResult(await handler.Handle(new DeletarCategoriaCommand { Id = id }));
     }
+
+    [HttpGet("{id}/videos")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
+    public async Task<ActionResult> GetByCategoria(
+    int id,
+    [FromServices] ObterVideosPorCategoriaHandler handler)
+    {
+        return new ParseRequestResult().ParseToActionResult(await handler.Handle(new GetByIdCommand { Id = id }));
+    }
 }

@@ -17,6 +17,7 @@ public class DeletarCategoriaHandler : IHandler<DeletarCategoriaCommand>
         _uow = uow;
     }
 
+
     public async Task<RequestResult> Handle(DeletarCategoriaCommand command)
     {
         var video =  await _categoriaRepository.GetByIdAsync(command.Id);
