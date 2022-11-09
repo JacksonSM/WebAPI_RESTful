@@ -64,4 +64,13 @@ public class VideosController : ControllerBase
         return new ParseRequestResult()
             .ParseToActionResult(await handler.Handle(new DeletarVideoCommand { Id = id}));
     }
+    [HttpGet("query")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public async Task<ActionResult> GetByQuery(
+    [FromQuery] GetByQueryCommand command,
+    [FromServices] ObterVideoPorQueryHandler handler)
+    {
+        return new ParseRequestResult().ParseToActionResult(await handler.Handle(command));
+    }
 }

@@ -3,12 +3,14 @@ using AluraFlix.Application.UseCases.Results;
 using AluraFlix.Domain.Interfaces;
 
 namespace AluraFlix.Application.UseCases.Handlers.Categoria;
+
 public class ObterVideosPorCategoriaHandler : IHandler<GetByIdCommand>
 {
     private readonly ICategoriaRepository _categoriaRepo;
     private readonly IVideosRepository _videosRepo;
 
-    public ObterVideosPorCategoriaHandler(ICategoriaRepository categoriaRepo, IVideosRepository videosRepo)
+    public ObterVideosPorCategoriaHandler(ICategoriaRepository categoriaRepo, 
+        IVideosRepository videosRepo)
     {
         _categoriaRepo = categoriaRepo;
         _videosRepo = videosRepo;
