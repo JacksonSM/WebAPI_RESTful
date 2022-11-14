@@ -8,8 +8,6 @@ public class MapperConfig : Profile
 {
     public MapperConfig()
     {
-
-
         RequestPorEntity();
     }
 

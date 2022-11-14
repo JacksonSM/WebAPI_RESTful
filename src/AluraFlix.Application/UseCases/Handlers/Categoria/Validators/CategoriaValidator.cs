@@ -19,5 +19,13 @@ public class CategoriaValidator : AbstractValidator<CategoriaCommand>
             .WithMessage(ResourceMensagensDeErro.CATEGORIA_COR_VAZIO)
             .MaximumLength(15)
             .WithMessage(ResourceMensagensDeErro.CATEGORIA_COR_MAXIMO15CARACTERES);
+
+        When(c => !string.IsNullOrWhiteSpace(c.Cor), () =>
+        {
+            RuleFor(x => x.Cor)
+                .Matches(@"\A\b[0-9a-fA-F]+\b\Z")
+                .WithMessage(ResourceMensagensDeErro.CATEGORIA_COR_INVALIDO);
+        });
+
     }
 }
