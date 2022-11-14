@@ -1,5 +1,4 @@
 ﻿using AluraFlix.Application.UseCases.Commands.Video;
-using AluraFlix.Exceptions;
 using FluentValidation;
 
 namespace AluraFlix.Application.UseCases.Handlers.Video.AdicionarVideo;

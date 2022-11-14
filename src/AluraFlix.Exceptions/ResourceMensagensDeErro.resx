@@ -150,6 +150,9 @@
   <data name="VIDEO_TITULO_VAZIO" xml:space="preserve">
     <value>O campo Titulo é obrigatório.</value>
   </data>
+  <data name="VIDEO_URL_INVALIDO" xml:space="preserve">
+    <value>O URL é inválido.</value>
+  </data>
   <data name="VIDEO_URL_VAZIO" xml:space="preserve">
     <value>O campo URL é obrigatório.</value>
   </data>

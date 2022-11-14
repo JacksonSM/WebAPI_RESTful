@@ -160,6 +160,15 @@ namespace AluraFlix.Exceptions {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to O URL é inválido..
+        /// </summary>
+        public static string VIDEO_URL_INVALIDO {
+            get {
+                return ResourceManager.GetString("VIDEO_URL_INVALIDO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to O campo URL é obrigatório..
         /// </summary>
         public static string VIDEO_URL_VAZIO {

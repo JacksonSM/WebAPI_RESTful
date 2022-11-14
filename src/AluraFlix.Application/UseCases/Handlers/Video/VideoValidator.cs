@@ -1,6 +1,7 @@
 ﻿using AluraFlix.Application.UseCases.Commands.Video;
 using AluraFlix.Exceptions;
 using FluentValidation;
+using System.Net;
 
 namespace AluraFlix.Application.UseCases.Handlers.Video;
 public class VideoValidator : AbstractValidator<VideoCommand>
@@ -22,9 +23,13 @@ public class VideoValidator : AbstractValidator<VideoCommand>
         RuleFor(c => c.URL)
             .NotEmpty()
             .WithMessage(ResourceMensagensDeErro.VIDEO_URL_VAZIO);
+            
 
-        RuleFor(c => c.CategoriaId)
-            .NotEmpty()
-            .WithMessage(ResourceMensagensDeErro.VIDEO_CATEGORIAID_VAZIO);
+        When(c => !string.IsNullOrWhiteSpace(c.URL), () =>
+        {
+            RuleFor(c => c.URL)
+                .Matches(@"[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)")
+                .WithMessage(ResourceMensagensDeErro.VIDEO_URL_INVALIDO);
+        });
     }
 }
