@@ -23,7 +23,7 @@ public class CategoriaValidator : AbstractValidator<CategoriaCommand>
         When(c => !string.IsNullOrWhiteSpace(c.Cor), () =>
         {
             RuleFor(x => x.Cor)
-                .Matches(@"\A\b[0-9a-fA-F]+\b\Z")
+                .Matches(@"#([\da-fA-F]{2})([\da-fA-F]{2})([\da-fA-F]{2})")
                 .WithMessage(ResourceMensagensDeErro.CATEGORIA_COR_INVALIDO);
         });
 

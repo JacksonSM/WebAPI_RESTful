@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CATEGORIA_COR_INVALIDO" xml:space="preserve">
-    <value>Apenas o hexadecimal é suportado.</value>
+    <value>Apenas o hexadecimal é suportado. ATEANÇÃO coloque a cerquilha (#) no inicio do codigo.</value>
   </data>
   <data name="CATEGORIA_COR_MAXIMO15CARACTERES" xml:space="preserve">
     <value>O campo Cor deve conter no maximo 15 caracteres</value>

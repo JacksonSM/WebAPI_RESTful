@@ -61,7 +61,7 @@ namespace AluraFlix.Exceptions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Apenas o hexadecimal é suportado..
+        ///   Looks up a localized string similar to Apenas o hexadecimal é suportado. ATEANÇÃO coloque a cerquilha (#) no inicio do codigo..
         /// </summary>
         public static string CATEGORIA_COR_INVALIDO {
             get {

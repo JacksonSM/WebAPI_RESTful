@@ -44,6 +44,7 @@ public class AdicionarVideoValidatorTest
         result.Errors.Should().ContainSingle().And
             .Contain(error => error.ErrorMessage.Equals(ResourceMensagensDeErro.VIDEO_TITULO_MAXIMO300CARACTERES));
     }
+
     [Fact]
     public void ValidarErroDescricaoVazio()
     {
