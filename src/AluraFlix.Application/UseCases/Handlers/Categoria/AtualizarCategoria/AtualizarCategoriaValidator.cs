@@ -3,7 +3,7 @@ using AluraFlix.Application.UseCases.Handlers.Categoria.Validators;
 using FluentValidation;
 
 namespace AluraFlix.Application.UseCases.Handlers.Categoria.AtualizarCategoria;
-internal class AtualizarCategoriaValidator : AbstractValidator<AtualizarCategoriaCommand>
+public class AtualizarCategoriaValidator : AbstractValidator<AtualizarCategoriaCommand>
 {
     public AtualizarCategoriaValidator()
     {

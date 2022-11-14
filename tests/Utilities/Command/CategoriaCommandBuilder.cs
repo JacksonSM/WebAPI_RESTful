@@ -10,4 +10,10 @@ public class CategoriaCommandBuilder
             .RuleFor(c => c.Titulo, f => f.Random.Words(6))
             .RuleFor(c => c.Cor, f => f.Internet.Color());
     }
+    public static AtualizarCategoriaCommand AtualizarCommandBuild()
+    {
+        return new Faker<AtualizarCategoriaCommand>()
+            .RuleFor(c => c.Titulo, f => f.Random.Words(6))
+            .RuleFor(c => c.Cor, f => f.Internet.Color());
+    }
 }
