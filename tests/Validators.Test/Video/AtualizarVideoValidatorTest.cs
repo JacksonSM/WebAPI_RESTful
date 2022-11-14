@@ -1,26 +1,25 @@
-﻿using AluraFlix.Application.UseCases.Handlers.Video.AdicionarVideo;
-using Utilities.Command;
+﻿using AluraFlix.Application.UseCases.Handlers.Video.AtualizarVideo;
 using AluraFlix.Exceptions;
+using Utilities.Command;
 
 namespace Validators.Test.Video;
-public class AdicionarVideoValidatorTest
+public class AtualizarVideoValidatorTest
 {
     [Fact]
     public void Sucesso()
     {
-        var validator = new AdicionarVideoValidator();
-        var command =  VideoCommandBuilder.AdicionarCommandBuild();
+        var validator = new AtualizarVideoValidator();
+        var command = VideoCommandBuilder.AtualizarCommandBuild();
 
         var result = validator.Validate(command);
 
         result.IsValid.Should().BeTrue();
     }
-
     [Fact]
     public void ValidarErroTituloVazio()
     {
-        var validator = new AdicionarVideoValidator();
-        var command = VideoCommandBuilder.AdicionarCommandBuild();
+        var validator = new AtualizarVideoValidator();
+        var command = VideoCommandBuilder.AtualizarCommandBuild();
         command.Titulo = string.Empty;
 
         var result = validator.Validate(command);
@@ -33,8 +32,8 @@ public class AdicionarVideoValidatorTest
     [Fact]
     public void ValidarErroTituloNoMaximo300Caracteres()
     {
-        var validator = new AdicionarVideoValidator();
-        var command = VideoCommandBuilder.AdicionarCommandBuild();
+        var validator = new AtualizarVideoValidator();
+        var command = VideoCommandBuilder.AtualizarCommandBuild();
         var stringCom310Caracteres = string.Join("", Enumerable.Repeat("a", 310));
         command.Titulo = stringCom310Caracteres;
 
@@ -47,8 +46,8 @@ public class AdicionarVideoValidatorTest
     [Fact]
     public void ValidarErroDescricaoVazio()
     {
-        var validator = new AdicionarVideoValidator();
-        var command = VideoCommandBuilder.AdicionarCommandBuild();
+        var validator = new AtualizarVideoValidator();
+        var command = VideoCommandBuilder.AtualizarCommandBuild();
         command.Descricao = string.Empty;
 
         var result = validator.Validate(command);
@@ -61,8 +60,8 @@ public class AdicionarVideoValidatorTest
     [Fact]
     public void ValidarErroDescricaoNoMaximo600Caracteres()
     {
-        var validator = new AdicionarVideoValidator();
-        var command = VideoCommandBuilder.AdicionarCommandBuild();
+        var validator = new AtualizarVideoValidator();
+        var command = VideoCommandBuilder.AtualizarCommandBuild();
         var stringCom610Caracteres = string.Join("", Enumerable.Repeat("a", 610));
         command.Descricao = stringCom610Caracteres;
 
@@ -76,8 +75,8 @@ public class AdicionarVideoValidatorTest
     [Fact]
     public void ValidarErroURLVazio()
     {
-        var validator = new AdicionarVideoValidator();
-        var command = VideoCommandBuilder.AdicionarCommandBuild();
+        var validator = new AtualizarVideoValidator();
+        var command = VideoCommandBuilder.AtualizarCommandBuild();
         command.URL = string.Empty;
 
         var result = validator.Validate(command);
@@ -90,8 +89,8 @@ public class AdicionarVideoValidatorTest
     [Fact]
     public void ValidarErroURLInvalido()
     {
-        var validator = new AdicionarVideoValidator();
-        var command = VideoCommandBuilder.AdicionarCommandBuild();
+        var validator = new AtualizarVideoValidator();
+        var command = VideoCommandBuilder.AtualizarCommandBuild();
         command.URL = "https://cursosaluracombr/dashboard";
 
         var result = validator.Validate(command);
