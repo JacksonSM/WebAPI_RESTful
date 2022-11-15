@@ -31,7 +31,13 @@ public class AtualizarVideoHandler : IHandler<AtualizarVideoCommand>
         if (video is null)
             return new RequestResult().NotFound();
 
-        video.Update(command.Titulo, command.Descricao, command.URL);
+        video.Update
+            (
+                titulo: command.Titulo,
+                descricao: command.Descricao,
+                url: command.URL,
+                categoriaId: command.CategoriaId
+            );
 
         _videosRepository.Update(video);
         await _uow.CommitAsync();

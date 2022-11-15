@@ -9,10 +9,11 @@ public class Video : BaseEntity
 
     public int CategoriaId { get; set; }
 
-    public void Update(string titulo, string descricao, string uRL)
+    public void Update(string titulo, string descricao, string url, int categoriaId)
     {
         Titulo = titulo;
         Descricao = descricao;
-        URL = uRL;
+        URL = url;
+        CategoriaId = categoriaId;
     }
 }
