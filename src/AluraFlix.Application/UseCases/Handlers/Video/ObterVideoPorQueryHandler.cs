@@ -1,6 +1,5 @@
 ﻿using AluraFlix.Application.UseCases.Commands.Video;
 using AluraFlix.Application.UseCases.Results;
-using AluraFlix.Domain.Entities;
 using AluraFlix.Domain.Interfaces;
 
 namespace AluraFlix.Application.UseCases.Handlers.Video;
@@ -15,20 +14,20 @@ public class ObterVideoPorQueryHandler : IHandler<GetByQueryCommand>
 
     public async Task<RequestResult> Handle(GetByQueryCommand command)
     {
-        IEnumerable<Domain.Entities.Video> videos;
+        IEnumerable<Domain.Entities.Video> videosResult;
         if (command.Search is null)
         {
-            videos = await _videosRepository.GetAllAsync();
+            videosResult = await _videosRepository.GetAllAsync();
         }
         else
         {
-            videos = await _videosRepository.GetAllAsync(video => video.Titulo.ToLower()
+            videosResult = await _videosRepository.GetAllAsync(video => video.Titulo.ToLower()
             .Contains(command.Search.ToLower()));
         }       
         
-        if(videos.Any())
+        if(videosResult.Any())
         {
-            return new RequestResult().Ok(videos);
+            return new RequestResult().Ok(videosResult);
         }
         else
         {

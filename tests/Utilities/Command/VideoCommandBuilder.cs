@@ -1,4 +1,5 @@
-﻿using AluraFlix.Application.UseCases.Commands.Video;
+﻿using AluraFlix.Application.UseCases.Commands;
+using AluraFlix.Application.UseCases.Commands.Video;
 using Bogus;
 
 namespace Utilities.Command;
@@ -20,4 +21,5 @@ public class VideoCommandBuilder
             .RuleFor(c => c.URL, f => f.Internet.Url())
             .RuleFor(c => c.CategoriaId, f => f.Random.Int(1, 200));
     }
+
 }

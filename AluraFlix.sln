@@ -17,9 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AluraFlix.API", "src\AluraF
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{FF5D6225-071C-4EC1-A5AE-45EAA434073F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validators.Test", "tests\Validators.Test\Validators.Test.csproj", "{4190E537-BACA-429B-B1A5-3589B742C0F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Validators.Test", "tests\Validators.Test\Validators.Test.csproj", "{4190E537-BACA-429B-B1A5-3589B742C0F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "tests\Utilities\Utilities.csproj", "{833C60A9-22BE-4181-AAEF-0AD8455417B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities", "tests\Utilities\Utilities.csproj", "{833C60A9-22BE-4181-AAEF-0AD8455417B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Handlers.Test", "tests\Handlers.Test\Handlers.Test.csproj", "{AC638CE7-9278-40BE-BF85-7A85D5B89E72}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,10 @@ Global
 		{833C60A9-22BE-4181-AAEF-0AD8455417B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{833C60A9-22BE-4181-AAEF-0AD8455417B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{833C60A9-22BE-4181-AAEF-0AD8455417B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC638CE7-9278-40BE-BF85-7A85D5B89E72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC638CE7-9278-40BE-BF85-7A85D5B89E72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC638CE7-9278-40BE-BF85-7A85D5B89E72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC638CE7-9278-40BE-BF85-7A85D5B89E72}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +73,7 @@ Global
 		{CEEB8FFE-0495-4567-81C7-A819738CE243} = {AD9C5D65-F5F6-4C2A-90ED-DA207F5F77E2}
 		{4190E537-BACA-429B-B1A5-3589B742C0F6} = {FF5D6225-071C-4EC1-A5AE-45EAA434073F}
 		{833C60A9-22BE-4181-AAEF-0AD8455417B9} = {FF5D6225-071C-4EC1-A5AE-45EAA434073F}
+		{AC638CE7-9278-40BE-BF85-7A85D5B89E72} = {FF5D6225-071C-4EC1-A5AE-45EAA434073F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0763F3C6-5DCF-4BC5-9878-191F0096E65D}
