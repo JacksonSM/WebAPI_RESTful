@@ -8,6 +8,7 @@ public class AluraFlixDbContext : DbContext
 
     public DbSet<Video> Videos { get; set; }
     public DbSet<Categoria> Categorias { get; set; }
+    public DbSet<Usuario> Usuarios { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
