@@ -20,9 +20,6 @@ public class VideoRepository : IVideosRepository
         return video;
     }
 
-    public async Task<IEnumerable<Video>> GetAllAsync() =>
-         await _context.Videos.AsNoTracking().ToArrayAsync();
-
     public async Task<IEnumerable<Video>> GetAllAsync(Expression<Func<Video, bool>> quando) =>
         await _context.Videos.AsNoTracking().Where(quando).ToArrayAsync();
 
