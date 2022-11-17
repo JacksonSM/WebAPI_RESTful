@@ -14,8 +14,7 @@ public class UsuarioMap : IEntityTypeConfiguration<Usuario>
                .HasMaxLength(200);
 
         builder.Property(c => c.Email)
-               .IsRequired()
-               .HasMaxLength(200);
+               .IsRequired();
 
         builder.Property(c => c.Senha)
                .IsRequired();
