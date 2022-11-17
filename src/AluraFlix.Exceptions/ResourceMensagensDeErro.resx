@@ -135,6 +135,21 @@
   <data name="CATEGORIA_TITULO_VAZIO" xml:space="preserve">
     <value>O campo Título é obrigatório.</value>
   </data>
+  <data name="EMAIL_EXISTENTE" xml:space="preserve">
+    <value>O email já existe na nossa base de dados.</value>
+  </data>
+  <data name="EMAIL_VAZIO" xml:space="preserve">
+    <value>O campo email é obrigatório.</value>
+  </data>
+  <data name="USUARIO_EMAIL_INVALIDO" xml:space="preserve">
+    <value>O email esta inválido.</value>
+  </data>
+  <data name="USUARIO_NOME_MAXIMO200CARACTERES" xml:space="preserve">
+    <value>O campo nome deve conter no maximo 200 caracteres</value>
+  </data>
+  <data name="USUARIO_NOME_VAZIO" xml:space="preserve">
+    <value>O campo nome é obrigatório.</value>
+  </data>
   <data name="VIDEO_CATEGORIAID_VAZIO" xml:space="preserve">
     <value>O campo categoriaId é obrigatório.</value>
   </data>

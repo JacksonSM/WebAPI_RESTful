@@ -10,7 +10,7 @@ public static class Bootstrapper
 {
     public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        var ConnectionString = configuration["ConnectionString"];
+        var ConnectionString = configuration.GetConnectionString("Default");
 
         services.AddDbContext<AluraFlixDbContext>(options =>
             options.UseSqlite(ConnectionString));
@@ -21,5 +21,6 @@ public static class Bootstrapper
     {
         services.AddScoped<IVideosRepository, VideoRepository>();
         services.AddScoped<ICategoriaRepository, CategoriaRepository>();
+        services.AddScoped<IUsuarioRepository, UsuarioRepository>();
     }
 }

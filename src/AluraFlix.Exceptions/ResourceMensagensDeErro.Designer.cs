@@ -115,6 +115,51 @@ namespace AluraFlix.Exceptions {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to O email já existe na nossa base de dados..
+        /// </summary>
+        public static string EMAIL_EXISTENTE {
+            get {
+                return ResourceManager.GetString("EMAIL_EXISTENTE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo email é obrigatório..
+        /// </summary>
+        public static string EMAIL_VAZIO {
+            get {
+                return ResourceManager.GetString("EMAIL_VAZIO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O email esta inválido..
+        /// </summary>
+        public static string USUARIO_EMAIL_INVALIDO {
+            get {
+                return ResourceManager.GetString("USUARIO_EMAIL_INVALIDO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo nome deve conter no maximo 200 caracteres.
+        /// </summary>
+        public static string USUARIO_NOME_MAXIMO200CARACTERES {
+            get {
+                return ResourceManager.GetString("USUARIO_NOME_MAXIMO200CARACTERES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O campo nome é obrigatório..
+        /// </summary>
+        public static string USUARIO_NOME_VAZIO {
+            get {
+                return ResourceManager.GetString("USUARIO_NOME_VAZIO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to O campo categoriaId é obrigatório..
         /// </summary>
         public static string VIDEO_CATEGORIAID_VAZIO {
