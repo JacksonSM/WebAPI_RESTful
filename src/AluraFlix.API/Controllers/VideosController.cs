@@ -64,6 +64,7 @@ public class VideosController : ControllerBase
         return new ParseRequestResult()
             .ParseToActionResult(await handler.Handle(new DeletarVideoCommand { Id = id}));
     }
+
     [HttpGet("query")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]

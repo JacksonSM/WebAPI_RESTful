@@ -141,6 +141,9 @@
   <data name="EMAIL_VAZIO" xml:space="preserve">
     <value>O campo email é obrigatório.</value>
   </data>
+  <data name="LOGIN_INVALIDO" xml:space="preserve">
+    <value>O login invalido! verifique o email e senha e tente novamente.</value>
+  </data>
   <data name="USUARIO_EMAIL_INVALIDO" xml:space="preserve">
     <value>O email esta inválido.</value>
   </data>

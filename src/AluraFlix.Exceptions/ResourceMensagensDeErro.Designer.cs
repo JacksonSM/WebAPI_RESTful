@@ -133,6 +133,15 @@ namespace AluraFlix.Exceptions {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to O login invalido! verifique o email e senha e tente novamente..
+        /// </summary>
+        public static string LOGIN_INVALIDO {
+            get {
+                return ResourceManager.GetString("LOGIN_INVALIDO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to O email esta inválido..
         /// </summary>
         public static string USUARIO_EMAIL_INVALIDO {

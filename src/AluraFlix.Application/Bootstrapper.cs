@@ -2,6 +2,7 @@
 using AluraFlix.Application.UseCases.Handlers.Categoria;
 using AluraFlix.Application.UseCases.Handlers.Categoria.AtualizarCategoria;
 using AluraFlix.Application.UseCases.Handlers.Categoria.CriarCategoria;
+using AluraFlix.Application.UseCases.Handlers.Usuario;
 using AluraFlix.Application.UseCases.Handlers.Usuario.Registrar;
 using AluraFlix.Application.UseCases.Handlers.Video;
 using AluraFlix.Application.UseCases.Handlers.Video.AdicionarVideo;
@@ -41,7 +42,8 @@ public static class Bootstrapper
                 .AddScoped<DeletarCategoriaHandler>()
                 .AddScoped<ObterVideosPorCategoriaHandler>();
 
-        services.AddScoped<RegistrarUsuarioHandler>();
+        services.AddScoped<RegistrarUsuarioHandler>()
+                .AddScoped<UsuarioLoginHandler>();
     }
 
     private static void AddEncriptadorService(IServiceCollection services, IConfiguration configuration)

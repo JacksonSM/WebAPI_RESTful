@@ -18,4 +18,8 @@ public class UsuarioRepository : IUsuarioRepository
 
     public async Task<bool> ExistEmailAsync(string email) =>
         await _context.Usuarios.AnyAsync(c => c.Email.Equals(email));
+
+    public async Task<Usuario> GetByEmailPasswordAsync(string email, string password) =>
+        await _context.Usuarios.FirstOrDefaultAsync(x => x.Email.ToLower().Equals(email.ToLower()) &&
+                                                    x.Senha.Equals(password));
 }
