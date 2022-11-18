@@ -5,12 +5,14 @@ using AluraFlix.Application.UseCases.Handlers.Video;
 using AluraFlix.Application.UseCases.Handlers.Video.AdicionarVideo;
 using AluraFlix.Application.UseCases.Handlers.Video.AtualizarVideo;
 using AluraFlix.Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AluraFlix.API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class VideosController : ControllerBase
 {
     [HttpPost]

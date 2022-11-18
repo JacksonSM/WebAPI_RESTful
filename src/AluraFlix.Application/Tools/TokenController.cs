@@ -1,6 +1,7 @@
 ﻿using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Text;
 
 namespace AluraFlix.Application.Tools;
 
@@ -18,28 +19,18 @@ public class TokenController
 
     public string Generate(string userEmail)
     {
-        var claims = new List<Claim>
-        {
-            new Claim(EmailAlias, userEmail),
-        };
-
         var tokenHandler = new JwtSecurityTokenHandler();
-
+        var key = Encoding.ASCII.GetBytes(_chaveDeSeguranca);
         var tokenDescriptor = new SecurityTokenDescriptor
         {
-            Subject = new ClaimsIdentity(claims),
+            Subject = new ClaimsIdentity(new Claim[]
+            {
+                    new Claim(EmailAlias, userEmail)
+            }),
             Expires = DateTime.UtcNow.AddMinutes(_tempoDeVidaDoTokenEmMinutos),
-            SigningCredentials = new SigningCredentials(SimetricKey(), SecurityAlgorithms.HmacSha256Signature)
+            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
         };
-
-        var securityToken = tokenHandler.CreateToken(tokenDescriptor);
-
-        return tokenHandler.WriteToken(securityToken);
-    }
-
-    private SymmetricSecurityKey SimetricKey()
-    {
-        var symmetricKey = Convert.FromBase64String(_chaveDeSeguranca);
-        return new SymmetricSecurityKey(symmetricKey);
+        var token = tokenHandler.CreateToken(tokenDescriptor);
+        return tokenHandler.WriteToken(token);
     }
 }

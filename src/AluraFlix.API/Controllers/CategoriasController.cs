@@ -5,13 +5,14 @@ using AluraFlix.Application.UseCases.Handlers.Categoria;
 using AluraFlix.Application.UseCases.Handlers.Categoria.AtualizarCategoria;
 using AluraFlix.Application.UseCases.Handlers.Categoria.CriarCategoria;
 using AluraFlix.Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AluraFlix.API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-
+[Authorize]
 public class CategoriasController : ControllerBase
 {
     [HttpPost]
