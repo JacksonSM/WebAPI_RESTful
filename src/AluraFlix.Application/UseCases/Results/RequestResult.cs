@@ -1,7 +1,10 @@
+using System.Text.Json.Serialization;
+
 namespace AluraFlix.Application.UseCases.Results
 {
     public class RequestResult
     {
+        [JsonIgnore]
         public int StatusCode { get; private set; }
         public string Message { get; private set; }
         public object Data { get; private set; }
@@ -37,7 +40,7 @@ namespace AluraFlix.Application.UseCases.Results
         public RequestResult NotFound()
         {
             StatusCode = 404;
-            Message = $"Não encontrado.";
+            Message = $"Recurso não encontrado.";
             return this;
         }
     }
