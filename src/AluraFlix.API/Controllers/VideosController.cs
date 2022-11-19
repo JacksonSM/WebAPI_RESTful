@@ -29,9 +29,10 @@ public class VideosController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     public async Task<ActionResult> GetAll(
+    [FromQuery] ObterTodosVideosCommand command,
     [FromServices] ObterTodosVideosHandler handler)
     {
-        return new ParseRequestResult().ParseToActionResult(await handler.Handle(new NoParametersCommand()));
+        return new ParseRequestResult().ParseToActionResult(await handler.Handle(command), Response);
     }
 
     [HttpGet("{id}")]
@@ -74,6 +75,6 @@ public class VideosController : ControllerBase
     [FromQuery] GetByQueryCommand command,
     [FromServices] ObterVideoPorQueryHandler handler)
     {
-        return new ParseRequestResult().ParseToActionResult(await handler.Handle(command));
+        return new ParseRequestResult().ParseToActionResult(await handler.Handle(command), Response);
     }
 }

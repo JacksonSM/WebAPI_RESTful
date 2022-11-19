@@ -1,7 +1,6 @@
-﻿using AluraFlix.Exceptions;
-using AluraFlix.Exceptions.ExceptionsBase;
+﻿using AluraFlix.Exceptions.ExceptionsBase;
 
-namespace MeuLivroDeReceitas.Exceptions.ExceptionsBase;
+namespace AluraFlix.Exceptions;
 public class LoginInvalidoException : AluraFlixException
 {
     public LoginInvalidoException() : base(ResourceMensagensDeErro.LOGIN_INVALIDO)

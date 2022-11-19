@@ -71,7 +71,6 @@ public class ObterVideoPorQueryHandlerTest
         (AluraFlix.Domain.Entities.Video videoGetAll = null, string query = "")
     {
         var videoRepo = VideoRepositoryBuilder.Instance()
-            .GetAll(videoGetAll, query)
             .Build();
 
         return new ObterVideoPorQueryHandler

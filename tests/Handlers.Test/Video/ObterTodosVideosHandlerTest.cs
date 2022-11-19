@@ -1,4 +1,5 @@
 ﻿using AluraFlix.Application.UseCases.Commands;
+using AluraFlix.Application.UseCases.Commands.Video;
 using AluraFlix.Application.UseCases.Handlers.Video;
 using Utilities.Entities;
 using Utilities.Repositories;
@@ -12,7 +13,7 @@ public class ObterTodosVideosHandlerTest
         var videoEntity = VideoBuilder.Build();
         var handler = HandlerBuild(videoEntity);
 
-        var response = await handler.Handle(new NoParametersCommand());
+        var response = await handler.Handle(new ObterTodosVideosCommand());
 
         response.Should().NotBeNull();
         response.StatusCode.Should().Be(200);
@@ -26,7 +27,7 @@ public class ObterTodosVideosHandlerTest
     {
         var handler = HandlerBuild();
 
-        var response = await handler.Handle(new NoParametersCommand());
+        var response = await handler.Handle(new ObterTodosVideosCommand());
 
         response.Should().NotBeNull();
         response.StatusCode.Should().Be(204);
@@ -36,7 +37,7 @@ public class ObterTodosVideosHandlerTest
 
     private ObterTodosVideosHandler HandlerBuild(AluraFlix.Domain.Entities.Video video = null)
     {
-        var videoRepo = VideoRepositoryBuilder.Instance().GetAll(video).Build();
+        var videoRepo = VideoRepositoryBuilder.Instance().Build();
         return new ObterTodosVideosHandler
             (
                 videoRepository: videoRepo

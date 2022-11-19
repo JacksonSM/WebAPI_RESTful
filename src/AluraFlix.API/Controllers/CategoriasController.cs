@@ -72,8 +72,10 @@ public class CategoriasController : ControllerBase
     [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
     public async Task<ActionResult> GetByCategoria(
     int id,
+    [FromQuery] ObterVideosPorCategoriaCommand command,
     [FromServices] ObterVideosPorCategoriaHandler handler)
     {
-        return new ParseRequestResult().ParseToActionResult(await handler.Handle(new GetByIdCommand { Id = id }));
+        command.Id = id;
+        return new ParseRequestResult().ParseToActionResult(await handler.Handle(command));
     }
 }

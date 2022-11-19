@@ -28,35 +28,6 @@ public class VideoRepositoryBuilder
 
         return this;
     }
-    public VideoRepositoryBuilder GetAll(Video video, string query = "")
-    {
-        if (!string.IsNullOrEmpty(query))
-        {
-            if (video is not null)
-            {
-                _repository.Setup(i => i
-                .GetAllAsync(It.IsAny<Expression<Func<Video, bool>>>())).ReturnsAsync(new Video[] { video });
-            }
-            else
-            {
-                _repository.Setup(i => i
-                .GetAllAsync(It.IsAny<Expression<Func<Video, bool>>>())).ReturnsAsync(Array.Empty<Video>());
-            }
-        }
-        else
-        {
-            if (video is not null)
-            {
-                _repository.Setup(i => i.GetAllAsync(null)).ReturnsAsync(new Video[] { video });
-            }
-            else
-            {
-                _repository.Setup(i => i.GetAllAsync(null)).ReturnsAsync(new Video[] { });
-            }
-        }
-        return this;
-    }
-
     public IVideosRepository Build()
     {
         return _repository.Object;

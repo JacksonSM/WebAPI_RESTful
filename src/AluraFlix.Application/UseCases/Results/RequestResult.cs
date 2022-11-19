@@ -6,6 +6,8 @@ namespace AluraFlix.Application.UseCases.Results
     {
         [JsonIgnore]
         public int StatusCode { get; private set; }
+        [JsonIgnore]
+        public Tuple<string, string>? Header { get; private set; }
         public string Message { get; private set; }
         public object Data { get; private set; }
 
@@ -13,6 +15,17 @@ namespace AluraFlix.Application.UseCases.Results
         {
             StatusCode = 200;
             Message = message;
+            Data = data;
+            return this;
+        }
+        public RequestResult Ok(
+            object data,
+            Tuple<string, string> header,
+            string message = "Requisição realizada com sucesso")
+        {
+            StatusCode = 200;
+            Message = message;
+            Header = header;
             Data = data;
             return this;
         }

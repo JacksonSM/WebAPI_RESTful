@@ -2,7 +2,7 @@
 using AluraFlix.Application.UseCases.Commands.Usuario;
 using AluraFlix.Application.UseCases.Results;
 using AluraFlix.Domain.Interfaces;
-using MeuLivroDeReceitas.Exceptions.ExceptionsBase;
+using AluraFlix.Exceptions;
 
 namespace AluraFlix.Application.UseCases.Handlers.Usuario;
 public class UsuarioLoginHandler : IHandler<UsuarioLoginCommand>
