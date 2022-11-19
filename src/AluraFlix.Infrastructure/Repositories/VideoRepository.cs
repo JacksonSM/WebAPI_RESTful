@@ -20,15 +20,42 @@ public class VideoRepository : IVideosRepository
         return video;
     }
 
-    public async Task<IEnumerable<Video>> GetAllAsync(Expression<Func<Video, bool>> quando)
+    public async Task<(IEnumerable<Video>, int qtdVideos)> GetAllWithPaginationAsync(
+        int? paginaAtual, int? videosPorPagina, Expression<Func<Video, bool>>? filtro = null)
     {
-        if(quando is null)
-            return await _context.Videos.ToArrayAsync();
-        
-        return await _context.Videos.AsNoTracking().Where(quando).ToArrayAsync();
-    }
-        
+        var query = _context.Videos.AsQueryable();
 
+        if (filtro is not null)
+            query = query.AsNoTracking().Where(filtro); 
+
+        if(paginaAtual.HasValue && videosPorPagina.HasValue)
+            query = query.AsNoTracking()
+                         .Where(filtro)
+                         .Skip((paginaAtual.Value - 1) * videosPorPagina.Value)
+                         .Take(videosPorPagina.Value);
+
+        var videos = await query.ToArrayAsync();
+
+        var qtdVideos = filtro is null ? await _context.Videos.AsNoTracking().CountAsync() :
+                                         await _context.Videos.AsNoTracking().Where(filtro).CountAsync();
+
+        return (videos, qtdVideos);
+    }
+
+    public async Task<(IEnumerable<Video>, int qtdVideos)> GetAllWithPaginationAsync(int? paginaAtual, int? videosPorPagina)
+    {
+        var query = _context.Videos.AsQueryable();
+
+        if (paginaAtual.HasValue && videosPorPagina.HasValue)
+            query = query.AsNoTracking()
+                         .Skip((paginaAtual.Value - 1) * videosPorPagina.Value)
+                         .Take(videosPorPagina.Value);
+
+        var videos = await query.ToArrayAsync();
+        var qtdVideos = await _context.Videos.AsNoTracking().CountAsync();
+
+        return (videos, qtdVideos);
+    }
 
     public async Task<Video> GetByIdAsync(int id) =>
         await _context.Videos.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
