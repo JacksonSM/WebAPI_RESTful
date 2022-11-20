@@ -30,7 +30,7 @@ public class UsuarioLoginHandler : IHandler<UsuarioLoginCommand>
         if (usuario == null)
             throw new LoginInvalidoException();
 
-        var token = _tokenController.Generate(usuario.Email);
+        var token = _tokenController.Generate(usuario.Email, usuario.Role);
         var response = new LoginResult
         {
             Nome = usuario.Nome,

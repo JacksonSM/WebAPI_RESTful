@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.Security.Claims;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -47,6 +48,12 @@ builder.Services.AddSwaggerGen(option =>
 
 builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionsFilter)));
 
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("USER", policy => policy.RequireClaim(ClaimTypes.Role, "USER"));
+    options.AddPolicy("ADMIN", policy => policy.RequireClaim(ClaimTypes.Role, "ADMIN"));
+});
+
 var key = builder.Configuration.GetRequiredSection("Settings:Jwt:ChaveToken").Value;
 var keyBytes = Encoding.ASCII.GetBytes(key);
 
@@ -54,6 +61,7 @@ builder.Services.AddAuthentication(x =>
 {
     x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+
 }).AddJwtBearer(x =>
 {
     x.RequireHttpsMetadata = false;

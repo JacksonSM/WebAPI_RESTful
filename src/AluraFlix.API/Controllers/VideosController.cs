@@ -12,10 +12,11 @@ namespace AluraFlix.API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-[Authorize]
+[Authorize(Roles = ("ADMIN,USER"))]
 public class VideosController : ControllerBase
 {
     [HttpPost]
+    [Authorize("ADMIN")]
     [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(Video))]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> Add(
@@ -46,9 +47,10 @@ public class VideosController : ControllerBase
     }
 
     [HttpPut("{id}")]
+    [Authorize("ADMIN")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
-    public async Task<ActionResult> GetById(
+    public async Task<ActionResult> Update(
     int id,
     [FromBody] AtualizarVideoCommand command,
     [FromServices] AtualizarVideoHandler handler)
@@ -58,6 +60,7 @@ public class VideosController : ControllerBase
     }
 
     [HttpDelete("{id}")]
+    [Authorize("ADMIN")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(string))]
     [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(string))]
     public async Task<ActionResult> Delete(

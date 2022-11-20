@@ -7,9 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 namespace AluraFlix.API.Controllers;
 [Route("api/[controller]")]
 [ApiController]
-public class AuthController : ControllerBase
+public class LoginController : ControllerBase
 {
-    [HttpPost("login")]
+    [HttpPost()]
     [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(LoginResult))]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> Login(

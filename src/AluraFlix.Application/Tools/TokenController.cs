@@ -17,7 +17,7 @@ public class TokenController
         _chaveDeSeguranca = chaveDeSeguranca;
     }
 
-    public string Generate(string userEmail)
+    public string Generate(string userEmail, string role)
     {
         var tokenHandler = new JwtSecurityTokenHandler();
         var key = Encoding.ASCII.GetBytes(_chaveDeSeguranca);
@@ -25,7 +25,8 @@ public class TokenController
         {
             Subject = new ClaimsIdentity(new Claim[]
             {
-                    new Claim(EmailAlias, userEmail)
+                    new Claim(EmailAlias, userEmail),
+                    new Claim(ClaimTypes.Role, role)
             }),
             Expires = DateTime.UtcNow.AddMinutes(_tempoDeVidaDoTokenEmMinutos),
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
