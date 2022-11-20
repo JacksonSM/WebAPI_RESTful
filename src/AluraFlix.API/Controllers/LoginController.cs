@@ -9,9 +9,14 @@ namespace AluraFlix.API.Controllers;
 [ApiController]
 public class LoginController : ControllerBase
 {
+    /// <summary>
+    /// Atenticação de usuario.
+    /// </summary>
+    /// <response code="200">Retorna o nome do usuario e um token</response>
+    /// <response code="400">Provavelmente os campos estão errado, Verifique a mensagem de erro.</response>
     [HttpPost]
-    [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(LoginResult))]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(LoginResult))]
+    [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(RequestResult))]
     public async Task<ActionResult> Login(
         [FromBody] UsuarioLoginCommand command,
         [FromServices] UsuarioLoginHandler handler)

@@ -1,4 +1,5 @@
 ﻿using Microsoft.OpenApi.Models;
+using Swashbuckle.Swagger;
 using System.Reflection;
 
 namespace AluraFlix.API.Configuration;
@@ -14,6 +15,12 @@ public static class SwaggerConfig
                 Version = "v1",
                 Title = "AluraFlix API",
                 Description = "API RESTful desenvolvida no Alura Challenge Back-End #5",
+                Contact = new OpenApiContact
+                {
+                    Name= "Jackson S. Maciel",
+                    Email= "jacksons.m2018@gmail.com",
+                    Url= new Uri("https://www.linkedin.com/in/jacksonsmaciel/")
+                }
             });
 
             var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
