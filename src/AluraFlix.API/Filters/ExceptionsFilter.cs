@@ -1,5 +1,6 @@
 ﻿using AluraFlix.API.Tools;
 using AluraFlix.Application.UseCases.Results;
+using AluraFlix.Exceptions;
 using AluraFlix.Exceptions.ExceptionsBase;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -33,6 +34,13 @@ public class ExceptionsFilter : IExceptionFilter
         {
             TratarErrosDeValidacaoException(context);
         }
+        else if(context.Exception is LoginInvalidoException){
+
+            context.Result = new ParseRequestResult()
+                .ParseToActionResult(new RequestResult()
+                .BadRequest(context.Exception.Message));
+        }
+
     }
 
     private static void TratarErrosDeValidacaoException(ExceptionContext context)
