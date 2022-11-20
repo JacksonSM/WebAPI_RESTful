@@ -9,7 +9,13 @@ namespace AluraFlix.API.Controllers;
 [ApiController]
 public class LoginController : ControllerBase
 {
-    [HttpPost()]
+    /// <summary>
+    /// Teste de documentaçao
+    /// </summary>
+    /// <param name="command"></param>
+    /// <param name="handler"></param>
+    /// <returns></returns>
+    [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(LoginResult))]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> Login(
