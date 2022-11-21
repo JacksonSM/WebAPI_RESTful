@@ -11,9 +11,17 @@ public class ObterTodosVideosHandlerTest
     public async Task Sucesso()
     {
         var videoEntity = VideoBuilder.Build();
-        var handler = HandlerBuild(videoEntity);
 
-        var response = await handler.Handle(new ObterTodosVideosCommand());
+        var command = new ObterTodosVideosCommand();
+
+        var handler = HandlerBuild
+            (
+                paginaAtual: command.paginaAtual,
+                videosPorPagina: command.itensPorPagina, 
+                video: videoEntity
+            );
+
+        var response = await handler.Handle(command);
 
         response.Should().NotBeNull();
         response.StatusCode.Should().Be(200);
@@ -35,9 +43,14 @@ public class ObterTodosVideosHandlerTest
     }
 
 
-    private ObterTodosVideosHandler HandlerBuild(AluraFlix.Domain.Entities.Video video = null)
+    private ObterTodosVideosHandler HandlerBuild
+        (int? paginaAtual = null,
+        int? videosPorPagina = null, AluraFlix.Domain.Entities.Video video = null, string? query = null)
     {
-        var videoRepo = VideoRepositoryBuilder.Instance().Build();
+        var videoRepo = VideoRepositoryBuilder.Instance()
+            .GetAll(query, video, paginaAtual, videosPorPagina)
+            .Build();
+
         return new ObterTodosVideosHandler
             (
                 videoRepository: videoRepo

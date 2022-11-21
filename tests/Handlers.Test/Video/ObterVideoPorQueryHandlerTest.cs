@@ -12,7 +12,13 @@ public class ObterVideoPorQueryHandlerTest
         var videoFaker = VideoBuilder.Build();
         var command = new GetByQueryCommand() { Search = "Alguma coisa." };
 
-        var handler = HandlerBuild(videoFaker, command.Search);
+        var handler = HandlerBuild
+            (
+                paginaAtual: command.paginaAtual,
+                videosPorPagina: command.itensPorPagina, 
+                video: videoFaker,
+                query: command.Search
+            );
 
         var response = await handler.Handle(command);
 
@@ -28,7 +34,7 @@ public class ObterVideoPorQueryHandlerTest
     {
         var command = new GetByQueryCommand() { Search = "Alguma coisa que não existe no banco" };
 
-        var handler = HandlerBuild();
+        var handler = HandlerBuild(query: command.Search);
 
         var response = await handler.Handle(command);
 
@@ -54,8 +60,14 @@ public class ObterVideoPorQueryHandlerTest
     public async Task EntradaSemQueryEsperaRetornoComValores()
     {
         var videoFaker = VideoBuilder.Build();
-        var handler = HandlerBuild(videoGetAll: videoFaker);
         var command = new GetByQueryCommand();
+
+        var handler = HandlerBuild
+            (
+                paginaAtual: command.paginaAtual,
+                videosPorPagina: command.itensPorPagina,
+                video: videoFaker
+            );
 
         var response = await handler.Handle(command);
 
@@ -68,9 +80,11 @@ public class ObterVideoPorQueryHandlerTest
 
 
     private ObterVideoPorQueryHandler HandlerBuild
-        (AluraFlix.Domain.Entities.Video videoGetAll = null, string query = "")
+        (int? paginaAtual = null,
+        int? videosPorPagina = null, AluraFlix.Domain.Entities.Video video = null, string? query = null)
     {
         var videoRepo = VideoRepositoryBuilder.Instance()
+            .GetAll(query, video, paginaAtual, videosPorPagina)
             .Build();
 
         return new ObterVideoPorQueryHandler
