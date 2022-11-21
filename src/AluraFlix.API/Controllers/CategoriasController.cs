@@ -123,6 +123,6 @@ public class CategoriasController : ControllerBase
     [FromServices] ObterVideosPorCategoriaHandler handler)
     {
         command.Id = id;
-        return new ParseRequestResult().ParseToActionResult(await handler.Handle(command));
+        return new ParseRequestResult().ParseToActionResult(await handler.Handle(command), Response);
     }
 }

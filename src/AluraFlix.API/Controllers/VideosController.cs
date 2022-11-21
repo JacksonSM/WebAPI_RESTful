@@ -35,7 +35,7 @@ public class VideosController : ControllerBase
     }
 
     /// <summary>
-    /// Retorna todos os videos com ou sem paginação.
+    /// Retorna todos os videos com ou sem paginação, pesquisa por titulo opcional.
     /// </summary>
     /// <remarks>As informaçoes da paginação estão no header com a chave: "X-Pagination"</remarks>
     /// <response code="200">Retorna lista de videos.</response>
@@ -108,25 +108,6 @@ public class VideosController : ControllerBase
     {
         return new ParseRequestResult()
             .ParseToActionResult(await handler.Handle(new DeletarVideoCommand { Id = id}));
-    }
-
-
-    /// <summary>
-    /// Retorna todos os videos com ou sem paginação, de acordo com o titulo escolhido.
-    /// </summary>
-    /// <remarks>As informaçoes da paginação estão no header com a chave: "X-Pagination"</remarks>
-    /// <response code="200">Retorna lista de videos, de acordo com o titulo escolhido.</response>
-    /// <response code="204">Não foi encontrado nenhum video, de acordo com o titulo escolhido.</response>
-    /// <response code="401">Essa operação é permitida apenas para usuarios autenticados.</response>
-    [HttpGet("query")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status204NoContent)]
-
-    public async Task<ActionResult> GetByQuery(
-    [FromQuery] GetByQueryCommand command,
-    [FromServices] ObterVideoPorQueryHandler handler)
-    {
-        return new ParseRequestResult().ParseToActionResult(await handler.Handle(command), Response);
     }
 
     /// <summary>
