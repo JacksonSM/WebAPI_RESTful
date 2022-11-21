@@ -1,0 +1,479 @@
+{
+	"info": {
+		"_postman_id": "756881b7-e7cf-4843-ba7c-c27750bb574f",
+		"name": "AluraFlixRequest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20420311"
+	},
+	"item": [
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "Login usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"user@gmail.com\",\r\n  \"senha\": \"user321\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URLBASE}}/login?",
+							"host": [
+								"{{URLBASE}}"
+							],
+							"path": [
+								"login"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Video",
+			"item": [
+				{
+					"name": "Adicionar Video",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"titulo\": \"Os 5 métodos da lista do Dart | #AluraMais\",\r\n  \"descricao\": \"Vem com a gente e com o Ricarth Lima, que é um dos Instrutores da Escola Mobile aqui na Alura, para aprender um pouco mais sobre cinco métodos de lista para você explorar no Dart. Vamos nessa? \",\r\n  \"url\": \"https://www.youtube.com/watch?v=pcnfjJG3jY4&ab_channel=AluraCursosOnline\",\r\n    \"categoriaId\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URLBASE}}/videos",
+							"host": [
+								"{{URLBASE}}"
+							],
+							"path": [
+								"videos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar video",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"titulo\": \"Como criar uma cultura de aprendizado em uma empresa com Alberto Souza | #HipstersPontoTube.\",\r\n        \"descricao\": \"Você já se perguntou como criar a cultura organizacional dentro de uma empresa ?\",\r\n        \"url\": \"https://www.youtube.com/watch?v=MsQhjz1XNCU&ab_channel=AluraCursosOnline\",\r\n        \"categoriaId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URLBASE}}/videos/38",
+							"host": [
+								"{{URLBASE}}"
+							],
+							"path": [
+								"videos",
+								"38"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obter todos os videos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URLBASE}}/videos?paginaAtual=1",
+							"host": [
+								"{{URLBASE}}"
+							],
+							"path": [
+								"videos"
+							],
+							"query": [
+								{
+									"key": "paginaAtual",
+									"value": "1"
+								},
+								{
+									"key": "itensPorPagina",
+									"value": "5",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "Como",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obter video por id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"titulo\": \"CÊ TÁ FAZENDO FALTA - PISADINHA DO VAQUEIRO - AS MELHORES MÚSICAS DE 2022!!\",\r\n  \"descricao\": \"Música\",\r\n  \"url\": \"https://www.youtube.com/watch?v=JaDsrLBBXnQ&ab_channel=HitsMusic3.0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URLBASE}}/videos/35",
+							"host": [
+								"{{URLBASE}}"
+							],
+							"path": [
+								"videos",
+								"35"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar video",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URLBASE}}/videos/4",
+							"host": [
+								"{{URLBASE}}"
+							],
+							"path": [
+								"videos",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categoria",
+			"item": [
+				{
+					"name": "Criar Categoria",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"titulo\": \"Desenvolvimento Mobilffe\",\r\n  \"cor\": \"#0000ff\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URLBASE}}/Categorias",
+							"host": [
+								"{{URLBASE}}"
+							],
+							"path": [
+								"Categorias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar  categoria",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"titulo\": \"Front-End\",\r\n    \"cor\": \"#ffff00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URLBASE}}/categorias/3",
+							"host": [
+								"{{URLBASE}}"
+							],
+							"path": [
+								"categorias",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obter todos as categorias",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URLBASE}}/categorias",
+							"host": [
+								"{{URLBASE}}"
+							],
+							"path": [
+								"categorias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obter videos por categoria",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URLBASE}}/categorias/3/videos?paginaAtual=3&itensPorPagina=1",
+							"host": [
+								"{{URLBASE}}"
+							],
+							"path": [
+								"categorias",
+								"3",
+								"videos"
+							],
+							"query": [
+								{
+									"key": "paginaAtual",
+									"value": "3"
+								},
+								{
+									"key": "itensPorPagina",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obter categoria por id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URLBASE}}/categorias/2",
+							"host": [
+								"{{URLBASE}}"
+							],
+							"path": [
+								"categorias",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar categoria",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{Token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URLBASE}}/categorias/6",
+							"host": [
+								"{{URLBASE}}"
+							],
+							"path": [
+								"categorias",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URLBASE",
+			"value": "https://aluraflixapi.azurewebsites.net/api",
+			"type": "string"
+		},
+		{
+			"key": "Token",
+			"value": ""
+		}
+	]
+}
