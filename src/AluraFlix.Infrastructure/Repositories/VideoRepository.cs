@@ -26,9 +26,9 @@ public class VideoRepository : IVideosRepository
         var query = _context.Videos.AsQueryable();
 
         if (filtro is not null)
-            query.AsNoTracking().Where(filtro);
+            query = query.AsNoTracking().Where(filtro);
 
-        SetPagination(paginaAtual, videosPorPagina, query);
+        query = SetPagination(paginaAtual, videosPorPagina, query);
 
         var videos = await query.ToArrayAsync();
 
@@ -42,7 +42,7 @@ public class VideoRepository : IVideosRepository
     {
         var query = _context.Videos.AsQueryable();
 
-        SetPagination(paginaAtual, videosPorPagina, query);
+        query = SetPagination(paginaAtual, videosPorPagina, query);
 
         var videos = await query.ToArrayAsync();
         var qtdVideos = await _context.Videos.AsNoTracking().CountAsync();
@@ -56,7 +56,7 @@ public class VideoRepository : IVideosRepository
 
         query.AsNoTracking().OrderBy(x => x.DataCriacao).Take(take);
 
-        SetPagination(paginaAtual, videosPorPagina, query);
+        query = SetPagination(paginaAtual, videosPorPagina, query);
 
         var videos = await query.ToArrayAsync();
         var qtdVideos = await _context.Videos.AsNoTracking().CountAsync();
@@ -77,11 +77,12 @@ public class VideoRepository : IVideosRepository
         _context.Videos.Update(video);
     }
 
-    private void SetPagination(int? paginaAtual, int? videosPorPagina, IQueryable<Video> query)
+    private IQueryable<Video> SetPagination(int? paginaAtual, int? videosPorPagina, IQueryable<Video> query)
     {
         if (paginaAtual.HasValue && videosPorPagina.HasValue)
-                query.AsNoTracking()
+              return query.AsNoTracking()
                      .Skip((paginaAtual.Value - 1) * videosPorPagina.Value)
                      .Take(videosPorPagina.Value);
+        return query;
     }
 }

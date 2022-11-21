@@ -362,3 +362,6 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /src/AluraFlix.Infrastructure/Context/UsuariosPadraoDb.cs
+/src/AluraFlix.API/appsettings.Production.json
+/src/AluraFlix.API/Properties/ServiceDependencies/AluraFlixAPI - Web Deploy/profile.arm.json
+/src/AluraFlix.API/.config/dotnet-tools.json
