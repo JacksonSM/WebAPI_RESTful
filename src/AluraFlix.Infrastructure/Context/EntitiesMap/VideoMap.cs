@@ -23,5 +23,6 @@ public class VideoMap : IEntityTypeConfiguration<Video>
         builder.Property(c => c.CategoriaId)
                .HasDefaultValue(1);
 
+        builder.HasOne<Categoria>().WithMany().HasForeignKey(c => c.CategoriaId);
     }
 }

@@ -16,7 +16,5 @@ public class CategoriaMap : IEntityTypeConfiguration<Categoria>
         builder.Property(c => c.Cor)
                .IsRequired()
                .HasMaxLength(200);
-
-        builder.HasMany(r => r.Videos).WithOne().HasForeignKey(r => r.CategoriaId);
     }
 }
