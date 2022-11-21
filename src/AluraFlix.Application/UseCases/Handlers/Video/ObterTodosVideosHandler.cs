@@ -16,7 +16,26 @@ public class ObterTodosVideosHandler : IHandler<ObterTodosVideosCommand>
 
     public async Task<RequestResult> Handle(ObterTodosVideosCommand command)
     {
-        (var videos, int qtdVideos) = await _videoRepository.GetAllWithPaginationAsync(command.paginaAtual, command.itensPorPagina);
+        IEnumerable<Domain.Entities.Video> videos;
+        int qtdVideos = 0;
+
+        if (string.IsNullOrEmpty(command.Search))
+        {
+             (videos, qtdVideos) = await _videoRepository.GetAllWithPaginationAsync
+                (
+                    command.paginaAtual,
+                    command.itensPorPagina
+                );
+        }
+        else
+        {
+              (videos, qtdVideos) = await _videoRepository.GetAllWithPaginationAsync
+                (
+                    command.paginaAtual,
+                    command.itensPorPagina,
+                    filtro: video => video.Titulo.ToLower().Contains(command.Search.ToLower())
+                );
+        }
 
         if (!(videos?.Count() > 0))
             return new RequestResult().NoContext();
