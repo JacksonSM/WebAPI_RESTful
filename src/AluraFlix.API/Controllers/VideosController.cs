@@ -11,11 +11,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AluraFlix.API.Controllers;
 
-/// <response code="401">Essa operação é permitida apenas para usuarios autenticados.</response>
 [Route("api/[controller]")]
 [ApiController]
 [Authorize(Roles = "ADMIN,USER")]
-[ProducesResponseType(StatusCodes.Status401Unauthorized)]
 public class VideosController : ControllerBase
 {
     /// <summary>
@@ -24,11 +22,11 @@ public class VideosController : ControllerBase
     /// <response code="201">Retorna o video adicionado.</response>
     /// <response code="400">Provavelmente as propriedades estão inválido, Verifique a mensagem de erro.</response>
     /// <response code="403">Essa operação é permitida apenas para administrador(a)</response>
+    /// <response code="401">Essa operação é permitida apenas para usuarios autenticados.</response>
     [HttpPost]
     [Authorize("ADMIN")]
-    [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(Video))]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(RequestResult))]
     [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(RequestResult))]
-    [ProducesResponseType(StatusCodes.Status403Forbidden)]
     public async Task<ActionResult> Add(
     [FromBody] AdicionarVideoCommand command,
     [FromServices] AdicionarVideoHandler handler)
@@ -42,9 +40,9 @@ public class VideosController : ControllerBase
     /// <remarks>As informaçoes da paginação estão no header com a chave: "X-Pagination"</remarks>
     /// <response code="200">Retorna lista de videos.</response>
     /// <response code="204">Não foi encontrado nenhum video.</response>
+    /// <response code="401">Essa operação é permitida apenas para usuarios autenticados.</response>
     [HttpGet]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(RequestResult))]
     public async Task<ActionResult> GetAll(
     [FromQuery] ObterTodosVideosCommand command,
     [FromServices] ObterTodosVideosHandler handler)
@@ -58,8 +56,9 @@ public class VideosController : ControllerBase
     /// <param name="id">Id do video</param>
     /// <response code="200">Retorna o video com o ID correspondente.</response>
     /// <response code="404">Video não foi encontrado.</response>
+    /// <response code="401">Essa operação é permitida apenas para usuarios autenticados.</response>
     [HttpGet("{id}")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(RequestResult))]
     [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(RequestResult))]
     public async Task<ActionResult> GetById(
     int id,
@@ -76,12 +75,12 @@ public class VideosController : ControllerBase
     /// <response code="400">Provavelmente as propriedades estão inválidos, Verifique a mensagem de erro.</response>
     /// <response code="404">Video não foi encontrado.</response>
     /// <response code="403">Essa operação é permitida apenas para administrador(a)</response>
+    /// <response code="401">Essa operação é permitida apenas para usuarios autenticados.</response>
     [HttpPut("{id}")]
     [Authorize("ADMIN")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(Video[]))]
     [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(RequestResult))]
     [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(RequestResult))]
-    [ProducesResponseType(StatusCodes.Status403Forbidden)]
     public async Task<ActionResult> Update(
     int id,
     [FromBody] AtualizarVideoCommand command,
@@ -98,11 +97,11 @@ public class VideosController : ControllerBase
     /// <response code="200">Video deletado com sucesso, retorna o video deletado.</response>
     /// <response code="404">Video não foi encontrado.</response>
     /// <response code="403">Essa operação é permitida apenas para administrador(a)</response>
+    /// <response code="401">Essa operação é permitida apenas para usuarios autenticados.</response>
     [HttpDelete("{id}")]
     [Authorize("ADMIN")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(RequestResult))]
     [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(RequestResult))]
-    [ProducesResponseType(StatusCodes.Status403Forbidden)]
     public async Task<ActionResult> Delete(
     int id,
     [FromServices] DeletarVideoHandler handler)
@@ -118,12 +117,30 @@ public class VideosController : ControllerBase
     /// <remarks>As informaçoes da paginação estão no header com a chave: "X-Pagination"</remarks>
     /// <response code="200">Retorna lista de videos, de acordo com o titulo escolhido.</response>
     /// <response code="204">Não foi encontrado nenhum video, de acordo com o titulo escolhido.</response>
+    /// <response code="401">Essa operação é permitida apenas para usuarios autenticados.</response>
     [HttpGet("query")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
+
     public async Task<ActionResult> GetByQuery(
     [FromQuery] GetByQueryCommand command,
     [FromServices] ObterVideoPorQueryHandler handler)
+    {
+        return new ParseRequestResult().ParseToActionResult(await handler.Handle(command), Response);
+    }
+
+    /// <summary>
+    /// Retorna todos os 10 ultimos videos com ou sem paginação e sem a necessidade de autenticação.
+    /// </summary>
+    /// <remarks>As informaçoes da paginação estão no header com a chave: "X-Pagination"</remarks>
+    /// <response code="200">Retorna lista de videos.</response>
+    /// <response code="204">Não foi encontrado nenhum video.</response>
+    [HttpGet("free")]
+    [AllowAnonymous]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(RequestResult))]
+    public async Task<ActionResult> GetAllFree(
+    [FromQuery] ObterTodosVideosFreeCommand command,
+    [FromServices] ObterTodosVideosFreeHandler handler)
     {
         return new ParseRequestResult().ParseToActionResult(await handler.Handle(command), Response);
     }

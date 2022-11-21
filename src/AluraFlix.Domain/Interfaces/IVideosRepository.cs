@@ -9,6 +9,8 @@ public interface IVideosRepository
         int? paginaAtual = null, int? videosPorPagina = null);
     Task<(IEnumerable<Video>, int qtdVideos)> GetAllWithPaginationAsync(
         int? paginaAtual = null, int? videosPorPagina = null, Expression<Func<Video, bool>>? filtro = null);
+    Task<(IEnumerable<Video>, int qtdVideos)> GetAllWithPaginationAsync(
+        int? paginaAtual = null, int? videosPorPagina = null, int take = 10);
     Task<Video> GetByIdAsync(int id);
     void Update(Video video);
     void Remove(Video video);

@@ -26,13 +26,9 @@ public class VideoRepository : IVideosRepository
         var query = _context.Videos.AsQueryable();
 
         if (filtro is not null)
-            query = query.AsNoTracking().Where(filtro); 
+            query.AsNoTracking().Where(filtro);
 
-        if(paginaAtual.HasValue && videosPorPagina.HasValue)
-            query = query.AsNoTracking()
-                         .Where(filtro)
-                         .Skip((paginaAtual.Value - 1) * videosPorPagina.Value)
-                         .Take(videosPorPagina.Value);
+        SetPagination(paginaAtual, videosPorPagina, query);
 
         var videos = await query.ToArrayAsync();
 
@@ -46,10 +42,21 @@ public class VideoRepository : IVideosRepository
     {
         var query = _context.Videos.AsQueryable();
 
-        if (paginaAtual.HasValue && videosPorPagina.HasValue)
-            query = query.AsNoTracking()
-                         .Skip((paginaAtual.Value - 1) * videosPorPagina.Value)
-                         .Take(videosPorPagina.Value);
+        SetPagination(paginaAtual, videosPorPagina, query);
+
+        var videos = await query.ToArrayAsync();
+        var qtdVideos = await _context.Videos.AsNoTracking().CountAsync();
+
+        return (videos, qtdVideos);
+    }
+    public async Task<(IEnumerable<Video>, int qtdVideos)> GetAllWithPaginationAsync(
+        int? paginaAtual = null, int? videosPorPagina = null, int take = 10)
+    {
+        var query = _context.Videos.AsQueryable();
+
+        query.AsNoTracking().OrderBy(x => x.DataCriacao).Take(take);
+
+        SetPagination(paginaAtual, videosPorPagina, query);
 
         var videos = await query.ToArrayAsync();
         var qtdVideos = await _context.Videos.AsNoTracking().CountAsync();
@@ -68,5 +75,13 @@ public class VideoRepository : IVideosRepository
     public void Update(Video video)
     {
         _context.Videos.Update(video);
+    }
+
+    private void SetPagination(int? paginaAtual, int? videosPorPagina, IQueryable<Video> query)
+    {
+        if (paginaAtual.HasValue && videosPorPagina.HasValue)
+                query.AsNoTracking()
+                     .Skip((paginaAtual.Value - 1) * videosPorPagina.Value)
+                     .Take(videosPorPagina.Value);
     }
 }
