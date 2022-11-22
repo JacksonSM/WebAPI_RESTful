@@ -16,7 +16,7 @@ public class ObterTodosVideosFreeHandler : IHandler<ObterTodosVideosFreeCommand>
     public async Task<RequestResult> Handle(ObterTodosVideosFreeCommand command)
     {
         (var videos, int qtdVideos) = await _videosRepository.GetAllWithPaginationAsync(
-            command.paginaAtual, command.itensPorPagina);
+            10, command.paginaAtual, command.itensPorPagina);
 
         if (!(videos?.Count() > 0))
             return new RequestResult().NoContext();

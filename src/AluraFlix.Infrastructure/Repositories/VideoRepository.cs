@@ -50,16 +50,17 @@ public class VideoRepository : IVideosRepository
         return (videos, qtdVideos);
     }
     public async Task<(IEnumerable<Video>, int qtdVideos)> GetAllWithPaginationAsync(
-        int? paginaAtual = null, int? videosPorPagina = null, int take = 10)
+        int take, int? paginaAtual = null, int? videosPorPagina = null)
     {
         var query = _context.Videos.AsQueryable();
 
-        query.AsNoTracking().OrderBy(x => x.DataCriacao).Take(take);
+        query = query.AsNoTracking().OrderBy(x => x.Id).Take(take);
+
+        var qtdVideos = await query.AsNoTracking().CountAsync();
 
         query = SetPagination(paginaAtual, videosPorPagina, query);
 
         var videos = await query.ToArrayAsync();
-        var qtdVideos = await _context.Videos.AsNoTracking().CountAsync();
 
         return (videos, qtdVideos);
     }
