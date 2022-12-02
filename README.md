@@ -9,6 +9,9 @@ Link para API: [AluraFlix](https://aluraflixapi.azurewebsites.net/swagger/index.
 Para você que usa o Postman para fazer requisições, aqui está a collection da API: </br>
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/2164b6c56662b416e384?action=collection%2Fimport)</br>
 
+![Capturar](https://user-images.githubusercontent.com/90290547/205185875-be690612-bdfd-46b0-b5fe-94dcd187a440.PNG)
+
+
 ## Sobre
 
 Esta WebApi foi desenvolvida na Alura Challange Backend 5° Edição. Este desafio foi agnóstico com relação à linguagens, frameworks, 
