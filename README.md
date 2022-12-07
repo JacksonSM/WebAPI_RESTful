@@ -4,7 +4,7 @@
 ## Deploy
 
 Para acessar os endpoints, utilize o seguinte usuario, email: `user@gmail.com`, Senha: `user321`</br>
-Link para API: [AluraFlix](https://aluraflixapi.azurewebsites.net/swagger/index.html)</br>
+Link para API: [AluraFlix](https://aluraflixapi.azurewebsites.net/swagger/index.html) **Fora do ar temporariamente!**</br>
 
 Para você que usa o Postman para fazer requisições, aqui está a collection da API: </br>
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/2164b6c56662b416e384?action=collection%2Fimport)</br>
